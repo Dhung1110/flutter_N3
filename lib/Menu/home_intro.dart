@@ -6,10 +6,7 @@ class HomeIntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Drawer chứa menu bài tập
       drawer: const _AppDrawer(),
-      
-      // AppBar với hamburger icon tự động mở drawer
       appBar: AppBar(
         title: const Text(
           "Giới thiệu",
@@ -21,18 +18,17 @@ class HomeIntroPage extends StatelessWidget {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF37C6F7), Color(0xFF28C76F)],
+              colors: [Color(0xFF37C6F7), Color.fromARGB(255, 97, 179, 226)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
         ),
       ),
-      
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF37C6F7), Color(0xFF28C76F)],
+            colors: [Color(0xFF37C6F7), Color.fromARGB(255, 97, 179, 226)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -42,26 +38,9 @@ class HomeIntroPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Avatar 
-                Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white.withOpacity(0.4),
-                  ),
-                  child: const CircleAvatar(
-                    radius: 48,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.person,
-                      size: 50,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
+                _buildMainAvatar(),
+                const SizedBox(height: 24),
                 
-                // Họ tên
                 const Text(
                   'Nguyễn Đăng Hưng',
                   style: TextStyle(
@@ -72,7 +51,6 @@ class HomeIntroPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 
-                // Mã SV
                 const Text(
                   'Mã SV: 22T1020146',
                   style: TextStyle(
@@ -81,23 +59,14 @@ class HomeIntroPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 24),
                 
-                // Trường Đại học
-                _infoCard(
-                  icon: Icons.school,
-                  title: 'Trường Đại học Khoa Học - Huế',
-                ),
+                _infoCard(icon: Icons.school, title: 'Trường Đại học Khoa Học - Huế'),
                 const SizedBox(height: 12),
                 
-                // Ngành học
-                _infoCard(
-                  icon: Icons.code,
-                  title: 'Công nghệ Thông tin',
-                ),
+                _infoCard(icon: Icons.code, title: 'Công nghệ Thông tin'),
                 const SizedBox(height: 12),
                 
-                // Học phần - Nhóm 3
                 _infoCard(
                   icon: Icons.phone_android,
                   title: 'Lập trình ứng dụng cho các thiết bị di động • Nhóm 3',
@@ -106,6 +75,33 @@ class HomeIntroPage extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMainAvatar() {
+    return Container(
+      padding: const EdgeInsets.all(8), 
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white.withOpacity(0.4),
+        boxShadow: [  
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: CircleAvatar(
+        radius: 65,  
+        backgroundColor: Colors.white,
+        backgroundImage: const AssetImage('assets/images/avatar.jpg'),
+        onBackgroundImageError: (_, __) => const Icon(
+          Icons.person,
+          size: 65,  
+          color: Colors.grey,
         ),
       ),
     );
@@ -138,13 +134,15 @@ class HomeIntroPage extends StatelessWidget {
             child: Icon(icon, color: Colors.white, size: 22),
           ),
           const SizedBox(width: 12),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-              height: 1.3,
+          Flexible(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                height: 1.3,
+              ),
             ),
           ),
         ],
@@ -220,19 +218,41 @@ class _AppDrawer extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    Text(
-                      'Bài tập',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+              Container(
+                height: 200,  
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF37C6F7), Color.fromARGB(255, 97, 179, 226)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _buildDrawerAvatar(),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Nguyễn Đăng Hưng',
+                        style: TextStyle(
+                          fontSize: 20,  // ✅ Font lớn hơn
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    Divider(thickness: 2),
-                  ],
+                      Text(
+                        '22T1020146',
+                        style: TextStyle(
+                          fontSize: 15,  // ✅ Font lớn hơn
+                          color: Colors.white.withOpacity(0.9),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -256,6 +276,33 @@ class _AppDrawer extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDrawerAvatar() {
+    return Container(
+      padding: const EdgeInsets.all(6),  
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white.withOpacity(0.3),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.15),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: CircleAvatar(
+        radius: 30,  
+        backgroundColor: Colors.white,
+        backgroundImage: const AssetImage('assets/images/avatar.jpg'),
+        onBackgroundImageError: (_, __) => const Icon(
+          Icons.person,
+          size: 30,
+          color: Colors.grey,
         ),
       ),
     );
