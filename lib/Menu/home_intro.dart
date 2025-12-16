@@ -269,6 +269,7 @@ class _AppDrawer extends StatelessWidget {
                       menuButton(context, title: "Product", routeName: "/product", icon: Icons.shopping_bag_outlined, color: Colors.green),
                       menuButton(context, title: "Register Form", routeName: "/register", icon: Icons.app_registration, color: Colors.cyan),
                       menuButton(context, title: "Home Page", routeName: "/home", icon: Icons.home_outlined, color: Colors.brown),
+                       menuButton(context, title: "Home Screen", routeName: "/homescreen", icon: Icons.home_rounded, color: const Color.fromARGB(255, 144, 230, 32)),
                       const SizedBox(height: 20),
                     ],
                   ),

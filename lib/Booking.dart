@@ -8,7 +8,7 @@ class BookingListPage extends StatelessWidget {
   final List<Map<String, dynamic>> places = [
     {
       'label': 'Bao bữa sáng',
-      'image': 'assets/images/image1.webp', // <-- Đổi tên file phù hợp
+      'image': 'assets/images/image1.webp', 
       'name': 'aNhill Boutique',
       'rating': 9.5,
       'ratingLabel': 'Xuất sắc',

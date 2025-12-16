@@ -165,6 +165,13 @@ class MenuPage extends StatelessWidget {
                         ),
                         menuButton(
                           context,
+                          title: "Home Screen",
+                          routeName: "/homescreen",
+                          icon: Icons.home_rounded,
+                          color: const Color.fromARGB(255, 170, 224, 51),
+                        ),
+                        menuButton(
+                          context,
                           title: "Home Page",
                           routeName: "/home",
                           icon: Icons.home_outlined,

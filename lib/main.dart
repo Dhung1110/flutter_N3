@@ -26,6 +26,7 @@ import 'countdown_timer_page.dart';
 import 'FeedbackForm.dart';
 import 'RegisterFrom.dart';
 import 'LoginForm.dart';
+import 'homescreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
         '/feedback': (context) => FeedbackForm(),
         '/register': (context) => RegisterForm(),
         '/login-form': (context) => LoginForm(),
+        '/homescreen': (context) => const HomeScreen(),
       },
     );
   }
