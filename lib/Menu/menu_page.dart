@@ -168,7 +168,21 @@ class MenuPage extends StatelessWidget {
                           title: "Home Screen",
                           routeName: "/homescreen",
                           icon: Icons.home_rounded,
-                          color: const Color.fromARGB(255, 170, 224, 51),
+                          color: const Color.fromARGB(255, 73, 122, 47),
+                        ),
+                        menuButton(
+                          context,
+                          title: "My Course",
+                          routeName: "/mycourse",
+                          icon: Icons.bookmark,
+                          color: const Color.fromARGB(255, 203, 237, 5),
+                        ),
+                        menuButton(
+                          context,
+                          title: "My Place",
+                          routeName: "/myplace",
+                          icon: Icons.landscape,
+                          color: const Color.fromARGB(255, 206, 11, 128),
                         ),
                         menuButton(
                           context,
@@ -177,6 +191,7 @@ class MenuPage extends StatelessWidget {
                           icon: Icons.home_outlined,
                           color: Colors.brown,
                         ),
+                        
                         const SizedBox(height: 16),
                       ],
                     ),
